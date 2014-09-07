@@ -1,0 +1,4 @@
+- create github account
+- create basic html document
+- put it on the web
+- style document using css
