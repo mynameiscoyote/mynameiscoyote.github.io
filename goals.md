@@ -1,4 +1,4 @@
-- create github account
+- create github account 0o
 - create basic html document
 - put it on the web
 - style document using css
