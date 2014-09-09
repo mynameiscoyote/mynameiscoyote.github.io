@@ -1,8 +1,45 @@
 body {
-  background-color: #3D3175;
   color: #AAA739;
+  background: #3D3175;
+
 }
+
 h1 {
   color: #95691B;
   font-size: 70px;
+}
+
+img, audio {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: black dotted 75px;
+    border-radius: 8%;
+}
+
+hr {
+  border-color: black;
+  width: 60%;
+  height: 7px;
+  background-color: black;
+}
+
+div {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARElEQVQYV42QQQoAMAjD2peLL3e7VBxMVPCghFAlALs9lXMiAmEEE+ys/oAaql27DpQ5TV+wmrdGpZgzitxenebxjyIPMbo1C/xJeAcAAAAASUVORK5CYII=) repeat;
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "arial black";
+  font-size: 1.6em;
+}
+
+#mouse_rug {
+  width: 650px;
+  border-radius: 8%;
+}
+
+#bff_rug {
+  width: 450px;
+  border-radius: 8%;
 }
