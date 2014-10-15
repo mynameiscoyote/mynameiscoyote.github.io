@@ -157,9 +157,9 @@ stage.addChild(disco3);
 stage.addChild(disco);
 stage.addChild(planet);
 stage.addChild(aliensmall);
+createCow(100,500);
 stage.addChild(alienbig);
 stage.addChild(alienblue);
-createCow(100,500);
 
 
 
