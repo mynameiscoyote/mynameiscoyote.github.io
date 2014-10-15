@@ -43,8 +43,8 @@ var texture = PIXI.Texture.fromImage("images/greenplanet.png");
 var planet = new PIXI.Sprite(texture);
 
 // center sprite 1's anchor point
-planet.anchor.x = 5.5;
-planet.anchor..5;
+planet.anchor.x = 1.0;
+planet.anchor.y = 1.0;
 
 // move the first sprite to the center of the screen
 planet.position.x = 1500;
