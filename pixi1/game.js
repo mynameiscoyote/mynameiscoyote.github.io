@@ -1,16 +1,12 @@
 
 
 // create an new instance of a pixi stage
-var stage = new PIXI.Stage(0x070c56);
+var interactive = true;
+
+var stage = new PIXI.Stage(0x070c56, interactive);
 
 // create a renderer instance.
 var renderer = PIXI.autoDetectRenderer(1400, 700);
-
-var graphics = new PIXI.Graphics();
-
-graphics.setInteractive(true);
-
-
 
 // add the renderer view element to the DOM
 document.body.appendChild(renderer.view);
@@ -112,11 +108,17 @@ aliensmall.anchor.y = 1.25;
 aliensmall.position.x = 400;
 aliensmall.position.y = 150;
 
+aliensmall.height = 25;
+aliensmall.width = 25;
+
+
 
 // create a texture from an image path
 var texture = PIXI.Texture.fromImage("images/alienbig.png");
 // create a new Sprite using the texture
 var alienbig = new PIXI.Sprite(texture);
+
+alienbig.setInteractive(true);
 
 // center sprite 1's anchor point
 alienbig.anchor.x = 0.5;
@@ -128,6 +130,7 @@ alienbig.position.y = 150;
 
 alienbig.height = 200;
 alienbig.width = 150;
+
 
 
 // create a texture from an image path
@@ -156,6 +159,8 @@ stage.addChild(planet);
 stage.addChild(aliensmall);
 stage.addChild(alienbig);
 stage.addChild(alienblue);
+createCow(100,500);
+
 
 
 function animate() {
@@ -164,12 +169,14 @@ function animate() {
 
     // just for fun, lets rotate our alien a little
     alienbig.rotation += 0.1;
-    aliensmall.rotation += 0.7;
+    aliensmall.rotation += 0.07;
     planet.rotation += 0.010;
-    disco.rotation -= 0.04
-    disco2.rotation -= 0.03
-    disco3.rotation -= 0.01
-    disco4.rotation -= 0.02
+    disco.rotation -= 0.04;
+    disco2.rotation -= 0.03;
+    disco3.rotation -= 0.01;
+    disco4.rotation -= 0.02;
+
+    // cow.rotation += 0.02;
 
     alienblue.position.x += 10;
     alienblue.position.y -= 4;
@@ -179,20 +186,73 @@ function animate() {
         alienblue.position.y = 650
     };
 
-    // disco.hitarea =
-
-    disco.mouseover = function(mouseData)
-    {
-        console.log('mouseover!')
-    };
-
-    graphics.mousemove = function(mouseData) {
-      console.log(mouseData);
-    }
-
 
 
     // render the stage
     renderer.render(stage);
+
 }
+
+
+function createCow(x, y)
+    {
+        // create our little cow friend..
+        var texture = PIXI.Texture.fromImage("images/cow.png");
+        var cow = new PIXI.Sprite(texture);
+
+        // enable the cow to be interactive.. this will allow it to respond to mouse and touch events
+        cow.interactive = true;
+        // this button mode will mean the hand cursor appears when you rollover the cow with your mouse
+        cow.buttonMode = true;
+
+        // center the cows anchor point
+        cow.anchor.x = 0.5;
+        cow.anchor.y = 0.5;
+        // make it a bit bigger, so its easier to touch
+        cow.scale.x = cow.scale.y = 3;
+
+        cow.width = 55.0;
+        cow.height = 40.0;
+
+        // use the mousedown and touchstart
+        cow.mousedown = cow.touchstart = function(data)
+        {
+            // stop the default event...
+            // data.originalEvent.preventDefault();
+
+            // store a reference to the data
+            // The reason for this is because of multitouch
+            // we want to track the movement of this particular touch
+            this.data = data;
+            this.alpha = 0.9;
+            this.dragging = true;
+        };
+
+        // set the events for when the mouse is released or a touch is released
+        cow.mouseup = cow.mouseupoutside = cow.touchend = cow.touchendoutside = function(data)
+        {
+            this.alpha = 1
+            this.dragging = false;
+            // set the interaction data to null
+            this.data = null;
+        };
+
+        // set the callbacks for when the mouse or a touch moves
+        cow.mousemove = cow.touchmove = function(data)
+        {
+            if(this.dragging)
+            {
+                var newPosition = this.data.getLocalPosition(this.parent);
+                this.position.x = newPosition.x;
+                this.position.y = newPosition.y;
+            }
+        }
+
+        // move the sprite to its designated position
+        cow.position.x = x;
+        cow.position.y = y;
+
+        // add it to the stage
+        stage.addChild(cow);
+    }
 
