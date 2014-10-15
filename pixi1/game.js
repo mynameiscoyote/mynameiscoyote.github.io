@@ -32,6 +32,45 @@ universe.width = 1400;
 
 
 // create a texture from an image path
+var texture = PIXI.Texture.fromImage("images/disco2.gif");
+// create a new Sprite using the texture
+var disco2 = new PIXI.Sprite(texture);
+
+// move the first sprite to the center of the screen
+disco2.position.x = 1100;
+disco2.position.y = 700;
+
+disco2.anchor.x = 0.5;
+disco2.anchor.y = 0.5;
+
+
+// create a texture from an image path
+var texture = PIXI.Texture.fromImage("images/disco4.gif");
+// create a new Sprite using the texture
+var disco4 = new PIXI.Sprite(texture);
+
+// move the first sprite to the center of the screen
+disco4.position.x = 1100;
+disco4.position.y = 700;
+
+disco4.anchor.x = 0.5;
+disco4.anchor.y = 0.5;
+
+
+// create a texture from an image path
+var texture = PIXI.Texture.fromImage("images/disco3.gif");
+// create a new Sprite using the texture
+var disco3 = new PIXI.Sprite(texture);
+
+// move the first sprite to the center of the screen
+disco3.position.x = 1100;
+disco3.position.y = 700;
+
+disco3.anchor.x = 0.5;
+disco3.anchor.y = 0.5;
+
+
+// create a texture from an image path
 var texture = PIXI.Texture.fromImage("images/disco.gif");
 // create a new Sprite using the texture
 var disco = new PIXI.Sprite(texture);
@@ -43,7 +82,8 @@ disco.position.y = 700;
 disco.anchor.x = 0.5;
 disco.anchor.y = 0.5;
 
-disco.hitArea = new PIXI.Rectangle(0, 0, 1000, 1000);
+// disco.hitArea = new PIXI.Rectangle(0, 0, 1000, 1000);
+
 
 // create a texture from an image path
 var texture = PIXI.Texture.fromImage("images/planet.png");
@@ -108,6 +148,9 @@ alienblue.width = 170;
 
 
 stage.addChild(universe);
+stage.addChild(disco2);
+stage.addChild(disco4);
+stage.addChild(disco3);
 stage.addChild(disco);
 stage.addChild(planet);
 stage.addChild(aliensmall);
@@ -123,7 +166,10 @@ function animate() {
     alienbig.rotation += 0.1;
     aliensmall.rotation += 0.7;
     planet.rotation += 0.010;
-    disco.rotation -= 0.03
+    disco.rotation -= 0.04
+    disco2.rotation -= 0.03
+    disco3.rotation -= 0.01
+    disco4.rotation -= 0.02
 
     alienblue.position.x += 10;
     alienblue.position.y -= 4;
